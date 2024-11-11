@@ -53,6 +53,7 @@ export function getPartsFromBuffer (invite) {
   parts.topic = invite.slice(0, 32)
   try {
     parts.expirationTimestamp = parseInt(invite.slice(32).toString())
+    parts.expirationBuffer = Buffer.from(parts.expirationTimestamp.toString())
   } catch (e) {
     parts.error = 'invalid expiration timestamp'
     return parts // ok is false

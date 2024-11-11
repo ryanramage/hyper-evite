@@ -23,7 +23,8 @@ console.log(invite)
 // lets connect on the invite topic
 const swarm1 = new Hyperswarm()
 const verifyPeer = (req) => {
-  if (!verifyInviteBuffer(keyPair.publicKey, req)) return // the invite is bad 
+  const { malformed, signFailed, expired } = verifyInviteBuffer(keyPair.publicKey, req)
+  if (malformed || signFailed || expired) return // invite is bad
   // let them in!
 }
 

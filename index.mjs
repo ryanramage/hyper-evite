@@ -38,7 +38,8 @@ export function getParts (inviteBase32) {
   if (!decoded.ok) {
     return { ok: false, error: decoded.error }
   }
-  return getPartsFromBuffer(decoded.buffer)
+  const parts = getPartsFromBuffer(decoded.buffer)
+  return { parts, invite: inviteBase32 }
 }
 
 export function getPartsFromBuffer (invite) {

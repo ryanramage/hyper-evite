@@ -1,0 +1,31 @@
+{
+  "name": "hyper-evite",
+  "version": "1.0.1",
+  "description": "Create and verifiy topic invites that are timesensitive. Mostly for hyperswarm applications.",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "standard && brittle test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanramage/hyper-evite.git"
+  },
+  "keywords": [
+    "holepunch",
+    "hyperswarm"
+  ],
+  "author": "Ryan Ramage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanramage/hyper-evite/issues"
+  },
+  "homepage": "https://github.com/ryanramage/hyper-evite#readme",
+  "devDependencies": {
+    "brittle": "^3.7.0",
+    "standard": "^17.1.2"
+  },
+  "dependencies": {
+    "hypercore-crypto": "^3.4.2",
+    "z32": "^1.1.0"
+  }
+}

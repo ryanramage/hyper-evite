@@ -25,7 +25,7 @@ export function encodeInviteParts (parts) {
   return z32.encode(Buffer.concat([parts.topic, parts.expirationBuffer, parts.signature]))
 }
 
-export function decodeInvite(inviteBase32) {
+export function decodeInvite (inviteBase32) {
   try {
     return { ok: true, buffer: z32.decode(inviteBase32) }
   } catch (e) {
@@ -33,7 +33,7 @@ export function decodeInvite(inviteBase32) {
   }
 }
 
-export function getParts(inviteBase32) {
+export function getParts (inviteBase32) {
   const decoded = decodeInvite(inviteBase32)
   if (!decoded.ok) {
     return { ok: false, error: decoded.error }
@@ -41,7 +41,7 @@ export function getParts(inviteBase32) {
   return getPartsFromBuffer(decoded.buffer)
 }
 
-export function getPartsFromBuffer(invite) {
+export function getPartsFromBuffer (invite) {
   const parts = { ok: false }
   if (invite.length !== 32 + 13 + 64) {
     parts.error = 'malformed invite length'
@@ -60,7 +60,7 @@ export function getPartsFromBuffer(invite) {
   return parts
 }
 
-export function verifyInviteBuffer(publicKey, inviteBuffer, opts = {}) {
+export function verifyInviteBuffer (publicKey, inviteBuffer, opts = {}) {
   const now = opts.now || Date.now()
   const results = {}
   const parts = getPartsFromBuffer(inviteBuffer)
@@ -81,7 +81,7 @@ export function verifyInviteBuffer(publicKey, inviteBuffer, opts = {}) {
   return results
 }
 
-export function verifyInvite(publicKey, inviteBase32, opts = {}) {
+export function verifyInvite (publicKey, inviteBase32, opts = {}) {
   const decoded = decodeInvite(inviteBase32)
   if (!decoded.ok) {
     return { malformed: true, error: decoded.error }
